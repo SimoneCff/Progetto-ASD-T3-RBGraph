@@ -38,8 +38,7 @@ public:
     BST(){
         //Inizializzazione BST = Insieme nullo
         setRoot(getNIL());
-        
-        nodes++;
+        this->nodes=0;
     };
     
     //Distruttore
@@ -170,7 +169,7 @@ template <class T> Node <T> * BST<T>::getPredecessor(Node <T> * currentN){
 
 template <class T> Node <T> * BST<T>::InsertNode(T Data){
             //Creazione Nodo
-    int keys = getNodes()+1;
+    int keys= Data->getID();
             Node<T> * NewNode = new Node<T>(keys, Data);
             NewNode->setParent(getNIL());
             NewNode->setRChild(getNIL());

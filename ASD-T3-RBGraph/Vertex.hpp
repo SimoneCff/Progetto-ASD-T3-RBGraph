@@ -112,7 +112,8 @@ template <class T> void Vertex<T>::InsertNewEdge(Vertex <T> * NewAdj){
 }
 
 template <class T> void Vertex<T>::DeleteEdge(Vertex<T> * DeleteAdj){
-    this->adjList->RB_Delete(getAdjList()->SearchNode(DeleteAdj->getID(), getAdjList()->getRoot()));
+    Node<Vertex<T> *> * Dnode = getAdjList()->SearchNode(DeleteAdj->getID(), getAdjList()->getRoot());
+    getAdjList()->RB_Delete(Dnode);
 }
 
 

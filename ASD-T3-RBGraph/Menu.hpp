@@ -137,14 +137,16 @@ template <class T> void menu<T>::InitRBGraph(){
     //inserimento nodi
     for (int v = 0; v<=m; v++){
         this->RBG->addVertex(new Vertex(v, v));
+         //cout << "Vertex: " <<RBG->getVertices()->at(v)->getID() << endl;
     }
+    cout << endl;
     
-    this->file.seekg(1, ios::beg); //imposta il puntatore dal secondo rigo;
+    this->file.seekg(1, ios::cur); //imposta il puntatore dal secondo rigo;
     
     //Conversione file.txt archi
     while (this->file >> i >> j) { //Mentre ancora legge ed trova coppia di numeri
-            m=i; n=j; k++;
             //Inserimento vertici nel RBtree
+        //cout << "Edge : " << i << "->" << j << endl;
             getRBG()->addEdge( new Edge(getRBG()->searchVertex(i),getRBG()->searchVertex(j),k));
             k++;
     
@@ -185,14 +187,21 @@ template <class T> void menu<T>::CallAdd(){
         }
     }
     
+    //Check se l 'arco 'e presente:
+    if (getRBG()->findEdge(getRBG()->findEdgeID(i, j))) {
+        cout << "L'arco " << i << "-" << j << "'è gia presente, ritorno al menu" << endl;
+        interactiveMenu();
+    } else {
+    
     cout << "Inserimento Edge :" << i << " " << j << endl;
     getRBG()->addEdge(new Edge(getRBG()->searchVertex(i), getRBG()->searchVertex(j), getRBG()->getEdges()->size()+1));
     cout << "Edge Inserito Correttamente, Ritorno al Menu" << endl;
     interactiveMenu();
+    }
 }
 
 template <class T> void menu<T>::CallRemove() {
-    int i, j;
+    int i = 0, j = 0;
     bool ifind = true, jfind = true;
     
     while(ifind) {
@@ -215,9 +224,16 @@ template <class T> void menu<T>::CallRemove() {
         }
     }
     
-    cout << "Rimozione Edge :" << i << " " << j << endl;
+    Edge<T> * Dedge= getRBG()->findEdgeID(i, j);
     
-    getRBG()->delEdge(getRBG()->findEdgeID(i, j));
+    if(Dedge == NULL){
+        cout << "Edge non esiste, ritorno al menu" << endl;
+        interactiveMenu();
+    }
+    
+    cout << "Rimozione Edge :" << Dedge->getSource()->getID() << " " << Dedge->getDestination()->getID() << endl;
+    
+    getRBG()->delEdge(Dedge);
     
     cout << "Edge rimosso con sucesso" << endl;
     interactiveMenu();
@@ -283,7 +299,7 @@ template <class T> void menu<T>::CallBFS() {
 
 template <class T> void menu<T>::CallD() {
     for (auto& Vertex: *(getRBG()->getVertices())) {
-        cout << "ID_Vertice : " << Vertex->getID() << "Distanza da Source : "<< Vertex->getD() << "Archi " << endl;
+        cout << "ID_Vertice : " << Vertex->getID() << " Distanza da Source : "<< Vertex->getD() << "Archi " << endl;
     }
 }
 

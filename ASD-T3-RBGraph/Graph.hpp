@@ -105,8 +105,6 @@ template <class T> void Graph<T>::BFS(Vertex<T> * Source) {
     Source->setD(0);
     Source->setPI(NULL);
     
-    cout << Source->getD() << " Color: "<<Source->getColor() << endl;
-    
     BFSQueue.push(Source);
     
     while (!BFSQueue.empty()){
@@ -128,7 +126,11 @@ template <class T> void Graph<T>::BFS(Vertex<T> * Source) {
 
 template <class T> Vertex<T> * Graph<T>::searchVertex(int id){
     //essendo l'id la posizione nel vettore
+    if (id > getVertices()->size()) {
+        return nullptr;
+    } else {
     return this->Vertices->at(id);
+    }
 }
 
 template <class T> Edge<T> * Graph<T>::findEdgeID(int i, int j) {

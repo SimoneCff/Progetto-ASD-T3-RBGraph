@@ -2,11 +2,14 @@
 //  main.cpp
 //  ASD-T3-RBGraph
 //
-//  Created by Simone Cioffi on 31/05/22.
-//  BST: Inset OK, Visit: OK, Delete: OK, Search: OK;
-//  RBtree: Inset OK, Visit: OK, Delete: OK, Search OK;
-// Graph & RBGraph: Insert : Ok,
-// Converte: OK, BFS OK, Find OK, Insert : OK, Remove: OK5
+//  Cr1eated by Simone Cioffi on 31/05/22.
+
+/*
+    Per abilitare l'abilità di lettura del file all'interno della cartella del progetto si deve andare su:
+        Product -> Scheme -> Edit Scheme.
+    Dopodiche  poi selezionare : Run -> Options -> Use custom working directory e selezionare la cartella nella quale è situato il file di input.txt
+ */
+
 
 #include <iostream>
 #include "Menu.hpp"

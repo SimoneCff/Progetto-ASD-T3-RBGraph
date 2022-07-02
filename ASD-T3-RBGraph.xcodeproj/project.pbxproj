@@ -24,14 +24,14 @@
 
 /* Begin PBXFileReference section */
 		8200F33828466193005A041B /* ASD-T3-RBGraph */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ASD-T3-RBGraph"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8200F33B28466193005A041B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		82402CE128522FDD00B36991 /* Edge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Edge.hpp; sourceTree = "<group>"; };
-		82402CE228523E7800B36991 /* Vertex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vertex.hpp; sourceTree = "<group>"; };
-		824806D0284F777E003F8896 /* RBtree.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = RBtree.hpp; sourceTree = "<group>"; };
-		824C2446284E50FA00BC34A8 /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
-		824C2448284E60BF00BC34A8 /* BST.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = BST.hpp; sourceTree = "<group>"; };
-		827B0BBB28524462008DF981 /* Graph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graph.hpp; sourceTree = "<group>"; };
-		82B410D4284661FD007906F5 /* Menu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
+		8200F33B28466193005A041B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph/main.cpp"; sourceTree = "<absolute>"; };
+		82402CE128522FDD00B36991 /* Edge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Edge.hpp; path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph/Edge.hpp"; sourceTree = "<absolute>"; };
+		82402CE228523E7800B36991 /* Vertex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Vertex.hpp; path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph/Vertex.hpp"; sourceTree = "<absolute>"; };
+		824806D0284F777E003F8896 /* RBtree.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = RBtree.hpp; path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph/RBtree.hpp"; sourceTree = "<absolute>"; };
+		824C2446284E50FA00BC34A8 /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Node.hpp; path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph/Node.hpp"; sourceTree = "<absolute>"; };
+		824C2448284E60BF00BC34A8 /* BST.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; name = BST.hpp; path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph/BST.hpp"; sourceTree = "<absolute>"; };
+		827B0BBB28524462008DF981 /* Graph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Graph.hpp; path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph/Graph.hpp"; sourceTree = "<absolute>"; };
+		82B410D4284661FD007906F5 /* Menu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Menu.hpp; path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph/Menu.hpp"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +69,9 @@
 				82B410D92846622E007906F5 /* Graph (with RBtree) */,
 				82B410D728466205007906F5 /* Menu */,
 			);
-			path = "ASD-T3-RBGraph";
-			sourceTree = "<group>";
+			name = "ASD-T3-RBGraph";
+			path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph";
+			sourceTree = "<absolute>";
 		};
 		824C2444284E4C2800BC34A8 /* RBTree */ = {
 			isa = PBXGroup;
@@ -80,7 +81,8 @@
 				824806D0284F777E003F8896 /* RBtree.hpp */,
 			);
 			name = RBTree;
-			sourceTree = "<group>";
+			path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph";
+			sourceTree = "<absolute>";
 		};
 		82B410D728466205007906F5 /* Menu */ = {
 			isa = PBXGroup;
@@ -88,7 +90,8 @@
 				82B410D4284661FD007906F5 /* Menu.hpp */,
 			);
 			name = Menu;
-			sourceTree = "<group>";
+			path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph";
+			sourceTree = "<absolute>";
 		};
 		82B410D92846622E007906F5 /* Graph (with RBtree) */ = {
 			isa = PBXGroup;
@@ -98,7 +101,8 @@
 				827B0BBB28524462008DF981 /* Graph.hpp */,
 			);
 			name = "Graph (with RBtree)";
-			sourceTree = "<group>";
+			path = "/Users/simonecioffi/Documents/GitHub/Progetto-ASD-T3-Linee-Notturne/ASD-T3-RBGraph";
+			sourceTree = "<absolute>";
 		};
 /* End PBXGroup section */
 
