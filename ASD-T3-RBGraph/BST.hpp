@@ -38,7 +38,8 @@ public:
     BST(){
         //Inizializzazione BST = Insieme nullo
         setRoot(getNIL());
-        this->nodes=0;
+        this->nodes = 0;
+        nodes++;
     };
     
     //Distruttore
@@ -120,9 +121,9 @@ template <class T> void BST<T>::PostorderV(Node <T> * currentN){
 }
 
 template <class T> Node<T> * BST<T>::SearchNode(int key, Node<T> * currentN){
-    if (currentN == getNIL()) return nullptr;
-    if (key == currentN->getKey()) return currentN;
-    if (key < currentN->getKey()){
+    if (currentN == getNIL() || currentN == NULL) return nullptr;
+    if (key == currentN->getData()->getData()) return currentN;
+    if (key < currentN->getData()->getData()){
         return SearchNode(key, currentN->getLChild());
     }else {
         return SearchNode(key, currentN->getRChild());
@@ -169,7 +170,7 @@ template <class T> Node <T> * BST<T>::getPredecessor(Node <T> * currentN){
 
 template <class T> Node <T> * BST<T>::InsertNode(T Data){
             //Creazione Nodo
-    int keys= Data->getID();
+            int keys = getNodes()+1;
             Node<T> * NewNode = new Node<T>(keys, Data);
             NewNode->setParent(getNIL());
             NewNode->setRChild(getNIL());
@@ -181,7 +182,7 @@ template <class T> Node <T> * BST<T>::InsertNode(T Data){
             //Ricerca posizionamento nodo
             while (Current != getNIL()) {
                 Parent = Current;
-                if (keys < Current->getKey()){
+                if (Data->getData() < Current->getData()->getData()){
                     Current = Current->getLChild();
                 } else
                     Current = Current->getRChild();
@@ -191,7 +192,7 @@ template <class T> Node <T> * BST<T>::InsertNode(T Data){
             //Inserisce nuovo nodo nella sua posizione
             if (Parent == getNIL()){
                 setRoot(NewNode);
-            } else if(keys < Parent->getKey()){
+            } else if(Data->getData() < Parent->getData()->getData()){
                 Parent->setLChild(NewNode);
             } else {
                 Parent->setRChild(NewNode);

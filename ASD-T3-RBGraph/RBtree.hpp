@@ -70,7 +70,6 @@ template <class T> void RBtree<T>::right_rotate(Node <T> * Cnode) {
 template <class T> void RBtree<T>::RB_Insert(T data) {
     Node<T> * NewNode = this->InsertNode(data); // X
     NewNode->setColor(RED);
-
     
     while (NewNode != this->getRoot() && (NewNode->getParent()->getColor() == RED)) {
         if (NewNode->getParent() == NewNode->getParent()->getParent()->getLChild()){
@@ -106,6 +105,7 @@ template <class T> void RBtree<T>::RB_Insert(T data) {
                 left_rotate(NewNode->getParent()->getParent());
             }
         }
+        cout << NewNode->getKey() << " " << NewNode->getColor() << endl;
     }
     this->getRoot()->setColor(BLACK);
 }

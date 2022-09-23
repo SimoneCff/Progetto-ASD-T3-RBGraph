@@ -105,31 +105,35 @@ template <class T> void Graph<T>::BFS(Vertex<T> * Source) {
     Source->setD(0);
     Source->setPI(NULL);
     
+    cout << "Visita Albero BF: " << endl;
+
     BFSQueue.push(Source);
     
     while (!BFSQueue.empty()){
         Vertex<T> * u = BFSQueue.front();
         BFSQueue.pop();
-        
+        cout << u->getData();;
         for (auto& v: * (u->getAdjList()->BuildV())){
             if (v->getColor()==WHITE){
                 v->setColor(GRAY);
                 v->setPI(u);
                 v->setD(u->getD()+1);
                 BFSQueue.push(v);
+                cout << "->" << v->getData() ;
             }
         }
         u->setColor(BLACK);
+        cout << endl;
     }
-    
+    cout << endl;
 }
 
 template <class T> Vertex<T> * Graph<T>::searchVertex(int id){
     //essendo l'id la posizione nel vettore
-    if (id > getVertices()->size()) {
+    if (id > getVertices()->size()-1){
         return nullptr;
     } else {
-    return this->Vertices->at(id);
+    return getVertices()->at(id);
     }
 }
 
@@ -144,6 +148,7 @@ template <class T> Edge<T> * Graph<T>::findEdgeID(int i, int j) {
 
 template <class T> void Graph<T>::delEdge(Edge<T> * Nedge){
     //remove edge from adjlist of source
+    cout << Nedge->getDestination()->getID() << endl;
     Nedge->getSource()->DeleteEdge(Nedge->getDestination());
     
     //Remove edge from vector

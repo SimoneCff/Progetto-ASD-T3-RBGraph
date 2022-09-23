@@ -72,13 +72,25 @@ template <class T> void menu<T>::closefile(){
 
 template <class T> void menu<T>::interactiveMenu(){
     int select = 0;
+    bool errorIn = true;
     //Enters Menu
     cout << "\t---Menu RBGraph---\n" << endl;
     cout << "\t Selezionare le seguenti opzioni : \n" <<endl;
     cout << "\t 1): AddEdge;\n \t 2): RemoveEdge;\n \t 3): FindEdge\n \t 4): BFS;\n \t 5): Exit\n" << endl;
     cout << "selezionare opzione tramite numero di riferimento : "<<endl;
     //Select Option
-    cin >> select;
+    while (errorIn) {
+        cin >> select;
+    // check cin is a number
+        if (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Errore Input, carattere non compatibile, riprovare :" << endl;
+        } else {
+            errorIn = false;
+        }
+    }
+    
     switch (select) {
         case 1:
             //Recall AddEdje
@@ -106,10 +118,10 @@ template <class T> void menu<T>::interactiveMenu(){
             exit(0);
             
         default:
-            cout << "\n Errore nella selezione , riprovare: " << endl;
+            cout << "\n Errore nella selezione , richiamo menu: " << endl;
             break;
+     }
     }
-}
 
 template <class T> void menu<T>::InitRBGraph(){
     //init file temp
@@ -137,16 +149,15 @@ template <class T> void menu<T>::InitRBGraph(){
     //inserimento nodi
     for (int v = 0; v<=m; v++){
         this->RBG->addVertex(new Vertex(v, v));
-         //cout << "Vertex: " <<RBG->getVertices()->at(v)->getID() << endl;
     }
-    cout << endl;
     
-    this->file.seekg(1, ios::cur); //imposta il puntatore dal secondo rigo;
+    this->file.seekg(0, ios::cur); //imposta il puntatore dal secondo rigo;
     
     //Conversione file.txt archi
     while (this->file >> i >> j) { //Mentre ancora legge ed trova coppia di numeri
-            //Inserimento vertici nel RBtree
-        //cout << "Edge : " << i << "->" << j << endl;
+            m=i; n=j; k++;
+            //Inserimento vertici nel RBtree+
+
             getRBG()->addEdge( new Edge(getRBG()->searchVertex(i),getRBG()->searchVertex(j),k));
             k++;
     
@@ -170,73 +181,96 @@ template <class T> void menu<T>::CallAdd(){
     while(ifind) {
         cout << "\t Inserire ID del vertice Source del nuovo Arco :" << endl;
         cin >> i;
-        if (getRBG()->searchVertex(i) == nullptr) {
+        
+        if (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Errore Input, carattere non compatibile, riprovare" << endl;
+        } else {if (getRBG()->searchVertex(i) == nullptr) {
            cout << "Vertice Source Inesistente, mettere un ID di un Vertice Esistente" << endl;
         } else {
             ifind = false;
+        }
         }
     }
     
     while(jfind) {
         cout << "\t Inserire ID del vertice Destination del nuovo Arco :" << endl;
         cin >> j;
-        if (getRBG()->searchVertex(j) == nullptr) {
+        if (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Errore Input, carattere non compatibile, riprovare" << endl;
+        }else {if (getRBG()->searchVertex(j) == nullptr) {
            cout << "Vertice Source Inesistente, mettere un ID di un Vertice Esistente" << endl;
         } else {
             jfind = false;
         }
+        }
     }
     
-    //Check se l 'arco 'e presente:
-    if (getRBG()->findEdge(getRBG()->findEdgeID(i, j))) {
-        cout << "L'arco " << i << "-" << j << "'è gia presente, ritorno al menu" << endl;
-        interactiveMenu();
-    } else {
+    if (getRBG()->findEdgeID(i, j) == nullptr) {
     
     cout << "Inserimento Edge :" << i << " " << j << endl;
     getRBG()->addEdge(new Edge(getRBG()->searchVertex(i), getRBG()->searchVertex(j), getRBG()->getEdges()->size()+1));
     cout << "Edge Inserito Correttamente, Ritorno al Menu" << endl;
     interactiveMenu();
+    } else {
+        cout << "Edge Esistente, Ritorno al menu" << endl;
+        interactiveMenu();
     }
 }
 
 template <class T> void menu<T>::CallRemove() {
-    int i = 0, j = 0;
+    int i, j;
     bool ifind = true, jfind = true;
     
     while(ifind) {
         cout << "\t Inserire ID del vertice Source del nuovo Arco :" << endl;
         cin >> i;
-        if (getRBG()->searchVertex(i) == nullptr) {
+        if (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Errore Input, carattere non compatibile, riprovare" << endl;
+        } else
+        {if (getRBG()->searchVertex(i) == nullptr) {
            cout << "Vertice Source Inesistente, mettere un ID di un Vertice Esistente" << endl;
         } else {
             ifind = false;
+        }
         }
     }
     
     while(jfind) {
         cout << "\t Inserire ID del vertice Destination del nuovo Arco :" << endl;
         cin >> j;
+        if (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Errore Input, carattere non compatibile, riprovare" << endl;
+        } else
+        {
         if (getRBG()->searchVertex(j) == nullptr) {
            cout << "Vertice Destination Inesistente, mettere un ID di un Vertice Esistente" << endl;
         } else {
             jfind = false;
         }
+        }
     }
     
-    Edge<T> * Dedge= getRBG()->findEdgeID(i, j);
+    if (getRBG()->findEdgeID(i, j) != nullptr) {
     
-    if(Dedge == NULL){
-        cout << "Edge non esiste, ritorno al menu" << endl;
+    
+    cout << "Rimozione Edge :" << i << " " << j << endl;
+    
+        getRBG()->delEdge(getRBG()->findEdgeID(i, j));
+        cout << "Edge rimosso con sucesso" << endl;
+        interactiveMenu();
+    } else {
+        cout << "Edge non esistente ritorno al menu" << endl;
         interactiveMenu();
     }
     
-    cout << "Rimozione Edge :" << Dedge->getSource()->getID() << " " << Dedge->getDestination()->getID() << endl;
-    
-    getRBG()->delEdge(Dedge);
-    
-    cout << "Edge rimosso con sucesso" << endl;
-    interactiveMenu();
 }
 
 template <class T> void menu<T>::CallFind() {
@@ -246,20 +280,34 @@ template <class T> void menu<T>::CallFind() {
     while(ifind) {
         cout << "\t Inserire ID del vertice Source del nuovo Arco :" << endl;
         cin >> i;
+        if (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Errore Input, carattere non compatibile, riprovare" << endl;
+        } else
+        {
         if (getRBG()->searchVertex(i) == nullptr) {
            cout << "Vertice Source Inesistente, mettere un ID di un Vertice Esistente" << endl;
         } else {
             ifind = false;
+        }
         }
     }
     
     while(jfind) {
         cout << "\t Inserire ID del vertice Destination del nuovo Arco :" << endl;
         cin >> j;
+        if (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Errore Input, carattere non compatibile, riprovare" << endl;
+        } else
+        {
         if (getRBG()->searchVertex(j) == nullptr) {
            cout << "Vertice Destination Inesistente, mettere un ID di un Vertice Esistente" << endl;
         } else {
             jfind = false;
+        }
         }
     }
     
@@ -281,17 +329,24 @@ template <class T> void menu<T>::CallBFS() {
     while(sfind) {
         cout << "\t Inserire ID del vertice Source :" << endl;
         cin >> s;
+        if (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Errore Input, carattere non compatibile, riprovare" << endl;
+        } else
+        {
         source = getRBG()->searchVertex(s);
         if ( source == nullptr) {
            cout << "Vertice Source Inesistente, mettere un ID di un Vertice Esistente" << endl;
         } else {
             sfind = false;
         }
+        }
     }
     cout << "Inizio BFS con source id : " << s << endl;
-    //source->getAdjList()->PreorderV(source->getAdjList()->getRoot());
     getRBG()->BFS(source);
-    cout << "Visita BFS effettuata: ecco le distanze dei nodi del RBGraph dal nodo source :" << endl;
+    
+    cout << "ecco le distanze dei nodi del RBGraph dal nodo source :" << endl;
     CallD();
     interactiveMenu();
     
@@ -299,7 +354,7 @@ template <class T> void menu<T>::CallBFS() {
 
 template <class T> void menu<T>::CallD() {
     for (auto& Vertex: *(getRBG()->getVertices())) {
-        cout << "ID_Vertice : " << Vertex->getID() << " Distanza da Source : "<< Vertex->getD() << "Archi " << endl;
+        cout << "ID_Vertice : " << Vertex->getID() << " Distanza da Source : "<< Vertex->getD() << " Archi " << endl;
     }
 }
 
