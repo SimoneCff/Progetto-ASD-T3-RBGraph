@@ -82,7 +82,7 @@ template <class T> void menu<T>::interactiveMenu(){
     while (errorIn) {
         cin >> select;
     // check cin is a number
-        if (!cin) {
+        if (!cin) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Errore Input, carattere non compatibile, riprovare :" << endl;
@@ -182,7 +182,7 @@ template <class T> void menu<T>::CallAdd(){
         cout << "\t Inserire ID del vertice Source del nuovo Arco :" << endl;
         cin >> i;
         
-        if (!cin) {
+        if (!cin){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Errore Input, carattere non compatibile, riprovare" << endl;
@@ -197,7 +197,7 @@ template <class T> void menu<T>::CallAdd(){
     while(jfind) {
         cout << "\t Inserire ID del vertice Destination del nuovo Arco :" << endl;
         cin >> j;
-        if (!cin) {
+        if (!cin){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Errore Input, carattere non compatibile, riprovare" << endl;
@@ -228,7 +228,7 @@ template <class T> void menu<T>::CallRemove() {
     while(ifind) {
         cout << "\t Inserire ID del vertice Source del nuovo Arco :" << endl;
         cin >> i;
-        if (!cin) {
+        if (!cin){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Errore Input, carattere non compatibile, riprovare" << endl;
@@ -244,7 +244,7 @@ template <class T> void menu<T>::CallRemove() {
     while(jfind) {
         cout << "\t Inserire ID del vertice Destination del nuovo Arco :" << endl;
         cin >> j;
-        if (!cin) {
+        if (!cin){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Errore Input, carattere non compatibile, riprovare" << endl;
@@ -280,7 +280,7 @@ template <class T> void menu<T>::CallFind() {
     while(ifind) {
         cout << "\t Inserire ID del vertice Source del nuovo Arco :" << endl;
         cin >> i;
-        if (!cin) {
+        if (!cin) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Errore Input, carattere non compatibile, riprovare" << endl;
@@ -297,7 +297,7 @@ template <class T> void menu<T>::CallFind() {
     while(jfind) {
         cout << "\t Inserire ID del vertice Destination del nuovo Arco :" << endl;
         cin >> j;
-        if (!cin) {
+        if (!cin){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Errore Input, carattere non compatibile, riprovare" << endl;
@@ -329,7 +329,7 @@ template <class T> void menu<T>::CallBFS() {
     while(sfind) {
         cout << "\t Inserire ID del vertice Source :" << endl;
         cin >> s;
-        if (!cin) {
+        if (!cin){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Errore Input, carattere non compatibile, riprovare" << endl;
