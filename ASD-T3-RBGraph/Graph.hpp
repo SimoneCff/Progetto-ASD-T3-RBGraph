@@ -112,20 +112,16 @@ template <class T> void Graph<T>::BFS(Vertex<T> * Source) {
     while (!BFSQueue.empty()){
         Vertex<T> * u = BFSQueue.front();
         BFSQueue.pop();
-        cout << u->getData();;
         for (auto& v: * (u->getAdjList()->BuildV())){
             if (v->getColor()==WHITE){
                 v->setColor(GRAY);
                 v->setPI(u);
                 v->setD(u->getD()+1);
                 BFSQueue.push(v);
-                cout << "->" << v->getData() ;
             }
         }
         u->setColor(BLACK);
-        cout << endl;
     }
-    cout << endl;
 }
 
 template <class T> Vertex<T> * Graph<T>::searchVertex(int id){
