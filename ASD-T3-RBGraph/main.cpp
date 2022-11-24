@@ -5,7 +5,6 @@
 //
 //  Created by Simone Cioffi on 31/05/22.
 
-
 #include <iostream>
 #include "Menu.hpp"
 

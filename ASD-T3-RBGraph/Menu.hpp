@@ -322,28 +322,8 @@ template <class T> void menu<T>::CallFind() {
 }
 
 template <class T> void menu<T>::CallBFS() {
-    int s;
-    bool sfind = true;
-    Vertex<T> * source;
-    
-    while(sfind) {
-        cout << "\t Inserire ID del vertice Source :" << endl;
-        cin >> s;
-        if (!cin){
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Errore Input, carattere non compatibile, riprovare" << endl;
-        } else
-        {
-        source = getRBG()->searchVertex(s);
-        if ( source == nullptr) {
-           cout << "Vertice Source Inesistente, mettere un ID di un Vertice Esistente" << endl;
-        } else {
-            sfind = false;
-        }
-        }
-    }
-    cout << "Inizio BFS con source id : " << s << endl;
+    Vertex<T> * source = getRBG()->searchVertex(0);
+    cout << "Inizio BFS con source id : " << source->getID << endl;
     getRBG()->BFS(source);
     
     cout << "ecco le distanze dei nodi del RBGraph dal nodo source :" << endl;
