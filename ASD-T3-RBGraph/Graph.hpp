@@ -144,7 +144,6 @@ template <class T> Edge<T> * Graph<T>::findEdgeID(int i, int j) {
 
 template <class T> void Graph<T>::delEdge(Edge<T> * Nedge){
     //remove edge from adjlist of source
-    cout << Nedge->getDestination()->getID() << endl;
     Nedge->getSource()->DeleteEdge(Nedge->getDestination());
     
     //Remove edge from vector

@@ -73,6 +73,7 @@ template <class T> void menu<T>::closefile(){
 template <class T> void menu<T>::interactiveMenu(){
     int select = 0;
     bool errorIn = true;
+
     //Enters Menu
     cout << "\t---Menu RBGraph---\n" << endl;
     cout << "\t Selezionare le seguenti opzioni : \n" <<endl;
@@ -258,9 +259,8 @@ template <class T> void menu<T>::CallRemove() {
         }
     }
     
-    if (getRBG()->findEdgeID(i, j) != nullptr) {
-    
-    
+    if (getRBG()->findEdge(getRBG()->findEdgeID(i,j))) {
+
     cout << "Rimozione Edge :" << i << " " << j << endl;
     
         getRBG()->delEdge(getRBG()->findEdgeID(i, j));
