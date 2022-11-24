@@ -356,7 +356,7 @@ template <class T> void menu<T>::CallD() {
     for (auto& Vertex: *(getRBG()->getVertices())) {
          cout << "ID_Vertice : " << Vertex->getID();
 
-        if Vertex->getD() < std::numeric_limits<T>::max() {
+        if (Vertex->getD() < std::numeric_limits<T>::max()) {
             cout  << " Distanza da Source : "<< Vertex->getD() << " Archi " << endl;
         } else {
             cout << "Nodo non presente nell'albero BF " << endl;
