@@ -148,7 +148,7 @@ template <class T> void menu<T>::InitRBGraph(){
     
     //inserimento nodi
     for (int v = 0; v<=m; v++){
-        this->RBG->addVertex(new Vertex(v, v));
+        this->RBG->addVertex(new Vertex<T>(v, v));
     }
     
     this->file.seekg(0, ios::cur); //imposta il puntatore dal secondo rigo;
@@ -158,7 +158,7 @@ template <class T> void menu<T>::InitRBGraph(){
             m=i; n=j; k++;
             //Inserimento vertici nel RBtree+
 
-            getRBG()->addEdge( new Edge(getRBG()->searchVertex(i),getRBG()->searchVertex(j),k));
+            getRBG()->addEdge( new Edge<T>(getRBG()->searchVertex(i),getRBG()->searchVertex(j),k));
             k++;
     
     }
@@ -212,7 +212,7 @@ template <class T> void menu<T>::CallAdd(){
     if (getRBG()->findEdgeID(i, j) == nullptr) {
     
     cout << "Inserimento Edge :" << i << " " << j << endl;
-    getRBG()->addEdge(new Edge(getRBG()->searchVertex(i), getRBG()->searchVertex(j), getRBG()->getEdges()->size()+1));
+    getRBG()->addEdge(new Edge<T>(getRBG()->searchVertex(i), getRBG()->searchVertex(j), getRBG()->getEdges()->size()+1));
     cout << "Edge Inserito Correttamente, Ritorno al Menu" << endl;
     interactiveMenu();
     } else {
