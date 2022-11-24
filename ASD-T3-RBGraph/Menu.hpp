@@ -323,7 +323,7 @@ template <class T> void menu<T>::CallFind() {
 
 template <class T> void menu<T>::CallBFS() {
     Vertex<T> * source = getRBG()->searchVertex(0);
-    cout << "Inizio BFS con source id : " << source->getID << endl;
+    cout << "Inizio BFS con source id : " << source->getID() << endl;
     getRBG()->BFS(source);
     
     cout << "ecco le distanze dei nodi del RBGraph dal nodo source :" << endl;
