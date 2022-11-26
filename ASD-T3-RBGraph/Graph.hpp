@@ -51,6 +51,8 @@ public:
     Edge<T> * findEdgeID(int i, int j);
     void delEdge(Edge<T> * Nedge);
     void BFS(Vertex<T> * Source);
+
+    int findEdgeIndex(Edge<T> * Nedge);
 };
 
 template <class T> void Graph<T>::setVertices(vector<Vertex<T> *> * NVert) {
@@ -145,10 +147,23 @@ template <class T> Edge<T> * Graph<T>::findEdgeID(int i, int j) {
 template <class T> void Graph<T>::delEdge(Edge<T> * Nedge){
     //remove edge from adjlist of source
     Nedge->getSource()->DeleteEdge(Nedge->getDestination());
+
+    int index = findEdgeIndex(Nedge);
     
     //Remove edge from vector
-    getEdges()->erase(getEdges()->begin()+Nedge->getID()-1);
+    getEdges()->erase(getEdges()->begin()+index);
     delete Nedge;
+}
+
+template <class T> int Graph<T>::findEdgeIndex(Edge<T> * FEdge){
+    int index = 0;
+    for (auto& Edge : *(getEdges())) {
+        if (Edge == FEdge){
+            return index;
+        }
+        index++;
+    }
+    return -1;
 }
 
 #endif /* Graph_h */

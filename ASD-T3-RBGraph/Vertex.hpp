@@ -113,7 +113,6 @@ template <class T> void Vertex<T>::InsertNewEdge(Vertex <T> * NewAdj){
 
 template <class T> void Vertex<T>::DeleteEdge(Vertex<T> * DeleteAdj){
     Node<Vertex <T>*> * SNode = getAdjList()->SearchNode(DeleteAdj->getData(), getAdjList()->getRoot());
-    cout << SNode->getKey() << " " << SNode->getColor() << endl;
     this->adjList->RB_Delete(SNode);
 }
 

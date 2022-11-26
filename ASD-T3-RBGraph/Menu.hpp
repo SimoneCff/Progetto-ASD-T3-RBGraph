@@ -258,6 +258,7 @@ template <class T> void menu<T>::CallRemove() {
         }
         }
     }
+    cout << endl;
     
     if (getRBG()->findEdge(getRBG()->findEdgeID(i,j))) {
 
